@@ -8,6 +8,13 @@ const userRouter = require("./routes/user.route");
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(
+  cors({
+    origin: ["https://rest-api-with-mongodb-sage.vercel.app/"],
+    methods: ["POST", "GET", "PATCH", "DELETE"],
+    credentials: true,
+  })
+);
 app.use("/api/users/", userRouter);
 
 app.get("/", (req, res) => {
